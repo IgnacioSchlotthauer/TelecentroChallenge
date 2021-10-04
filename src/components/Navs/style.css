@@ -1,0 +1,29 @@
+.header{
+    background: #343a40;
+    height: 5vh;
+    width: 100vw;
+    border-radius: 5px;
+    color: #3c3c92;
+    position: fixed;
+    top: 0;
+}
+.header > nav > a > h1 {
+    color: white;
+}
+.header-text{
+    padding: 10px;
+}
+
+.footer{
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    height: 5vh;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer h1{
+    padding: 0vh 2vw !important;
+}

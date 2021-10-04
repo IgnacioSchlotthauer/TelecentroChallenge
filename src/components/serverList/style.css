@@ -1,0 +1,77 @@
+.server-form{
+    display: flex;
+    background: #343a40;
+    height: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px;
+    display: flex;
+    border: 5px solid white;
+}
+
+.form-group{
+    margin-bottom: 0px !important;
+}
+.card-img-size{
+    height: auto!important;
+    width: 100px!important;
+    align-self: center;
+}
+.servidores{
+    margin-top: 1%;
+}
+.card > img{
+    padding: 5px;
+}
+.card-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.card-body h2{
+    text-decoration: underline;
+}
+.servidores{
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+}
+.columna{
+    max-width: 100%;
+}
+.btn{
+    margin: 5px 0px;
+    font-family: 'Gemunu Libre', sans-serif;
+
+}
+.table-row{
+    background: #afa8a8;
+}
+.btn-consulta {
+    color: #fff;
+    background-color: #58984a;
+    border-color: #58984a;
+}
+.form-control{
+  height: calc(1.5em + .75rem + 8px)!important;
+}
+.table thead th{
+    background: #525252;
+    color: white;
+    font-size: 2rem;
+}
+h1{
+    font-family: 'Gemunu Libre', sans-serif;
+}
+.form-control{
+    font-family: 'Gemunu Libre', sans-serif;
+
+}
+.div-graficas{
+    display: flex;
+    flex-direction: row ;
+}
+.txt{
+    margin: 0px !important;
+}
