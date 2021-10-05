@@ -25,6 +25,6 @@ Challenge para Telecentro
 
 Para correr este proyecto es necesario tener instalado un server PHP, en mi caso utilicé el Xampp, en el Xampp inicie el Apache. 
 
-Una vez que esta corriendo el servidor abrir su terminal y dirigirse al directorio en el que haya clonado el repositorio y realizar <code>./start.sh</code>
+Una vez que esta corriendo el servidor abrir su terminal y dirigirse a la carpeta Telecentro Challenge y realizar <code>./start.sh</code>
 
 Para la base de datos se utilizó MongoDB.
