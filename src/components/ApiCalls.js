@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//Archivo que contiene los llamados a las API
+
 let Apicalls = {
   serverData(image, description, host, ip, position) {
     return new Promise((resolve) => {

@@ -16,17 +16,15 @@ const ServerList = () => {
     HOST: "",
     IP: "",
   });
-  const [isOpen, setIsOpen] = useState(true);
   const [servers, setServers] = useState([]);
-  const toggle = () => setIsOpen(!isOpen);
   const { image, description, HOST, IP } = formValues;
   const [editServer, setEditServer] = useState(false);
   const [serverData, setServerData] = useState(null)
-  useEffect(() => {}, [image]);
-  useEffect(() => {}, [description]);
-  useEffect(() => {}, [HOST]);
-  useEffect(() => {}, [IP]);
-
+  useEffect(() => {}, [image]);  // Actualiza el dato del form
+  useEffect(() => {}, [description]); // Actualiza el dato del form
+  useEffect(() => {}, [HOST]); // Actualiza el dato del form
+  useEffect(() => {}, [IP]); // Actualiza el dato del form
+  
   const getServers = () => {
     Apicalls.getServers().then(res => {
       if(res.data!=servers){
@@ -42,11 +40,12 @@ const ServerList = () => {
 
   const handleSubmit = (e, item) => {
       e.preventDefault();
-      let reader = new FileReader();
-      let position = 0;
+      let reader = new FileReader(); // se crea un FileReader para guardar la imagen en la DB
+      let position = 0; // Establece en 0 la posicion para contemplar un caso base en el que no haya servidores
       if(servers.length>0){
-        position = servers[servers.length - 1].Position + 1;
+        position = servers[servers.length - 1].Position + 1; // Determina la posición del servidor
       }
+      // Si editServer esta vacio el formulario carga servidores si editServer no esta vacio el formulario esta en modo edición
     if(editServer==false){ 
       reader.readAsDataURL(document.getElementById("image").files[0]);
       reader.onload = function () {
@@ -68,10 +67,10 @@ const ServerList = () => {
         });
       };
     }
-    setEditServer(false);
+    setEditServer(false); // Vuelve a setear el formulario una vez q termina en modo de carga de servidores
 
   };
-
+  //Función encargada de actualizar la posición en el front y llamar a la apicall para que actualice la posición de los servidores en la DB
   const handleDragEnd = (result) => {
     console.log(result);
     if (!result.destination) return;
@@ -80,7 +79,7 @@ const ServerList = () => {
 	})
 	}
 
-
+// Elimina servidor
   const deleteServer = (id) => {
     Apicalls.delServer(id).then((res)=>{
       getServers();
@@ -88,13 +87,16 @@ const ServerList = () => {
     })
   }
 
-
+// Permite editar datos del servidor y se autocompletan los campos para 
+// saber a que servidor hace referencia, a modo autocritica no se autocompleta el campo de la imagen.
   const updateServer = (server) => {
     setEditServer(server._id);
     document.getElementById('description').value=server.description;
     document.getElementById('HOST').value=server.HOST;
     document.getElementById('IP').value=server.IP;
   }
+
+  // Hace el llamado de las consultas SNMP y le da valor a serverData lo que habilita mostrar las gráficas
 
   const consultaSNMP = (id) => {
 

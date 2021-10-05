@@ -16,6 +16,7 @@ use App\Models\Server;
 */
 
 
+/* Publicar servidor */
 
 Route::post('/upload', function (Request $request) {
     $server = new Server();
@@ -31,12 +32,16 @@ Route::post('/upload', function (Request $request) {
     return(response(''))->withHeaders(['Access-Control-Allow-Origin' => '*']);
 });
 
+/* Eliminar servidor */
+
 Route::delete('/delServer', function (Request $request) {
 
     Server::find($request->get('id'))->delete();
 
     return(response(''))->withHeaders(['Access-Control-Allow-Origin' => '*']);
 });
+
+/* Consulta servidor SNMP (Simple Network Management Protocol) */
 
 Route::get('/consulta/{id}', function ($id) {
 
@@ -46,7 +51,7 @@ Route::get('/consulta/{id}', function ($id) {
     $session->valueretrieval = SNMP_VALUE_PLAIN; 
     $sessionCount = $session->walk("iso.3.6.1.2.1.1.7.0", TRUE);
     $processCount = $session->walk("iso.3.6.1.2.1.2.1.0", TRUE);
-
+    /* Guarda la hora y la respuesta para generar la gráfica tanto de las sessiones como de los procesos */
     $server->push('historySession',[
             'time' => time(),
             'response' => $sessionCount
@@ -64,6 +69,7 @@ Route::get('/consulta/{id}', function ($id) {
         ]))->withHeaders(['Access-Control-Allow-Origin' => '*']);
 });
 
+/* Update de un servidor ya cargado */
 
 Route::patch('/updServer', function (Request $request) {
 
@@ -77,6 +83,8 @@ Route::patch('/updServer', function (Request $request) {
     $server->save();
     return(response(''))->withHeaders(['Access-Control-Allow-Origin' => '*']);
 });
+
+/* Update de la posición de un servidor en el drag and drop */
 
 Route::patch('/position', function(Request $request){
 
@@ -95,6 +103,8 @@ Route::patch('/position', function(Request $request){
     return(response(''))->withHeaders(['Access-Control-Allow-Origin' => '*']);
 
 });
+
+/* Trae los servidores ordenados por posición */
 
 Route::get('/servers', function (Request $request) {
     

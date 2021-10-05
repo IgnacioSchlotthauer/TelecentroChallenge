@@ -16,3 +16,4 @@ export const useForm = (initialState = { }) => {
     return [values, handleInputChange ];
 
 }
+//Este hook se encarga de actualizar constantemente el dato de la value cuando se modifica
